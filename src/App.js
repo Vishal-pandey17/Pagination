@@ -16,7 +16,7 @@ export default function App() {
         setData(response.data);
       } catch (err) {
         
-        console.log("Failed to fetch data",err);
+        alert("Failed to fetch data",err);
       }
     };
 
