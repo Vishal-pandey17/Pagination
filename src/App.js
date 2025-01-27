@@ -8,11 +8,19 @@ export default function App() {
   const [itemsPerPage] = useState(10);
 
   useEffect(() => {
-    // Fetch data from the API
-    axios
-      .get("https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json")
-      .then((response) => setData(response.data))
-      .catch((error) => console.error("Error fetching data: ", error));
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json"
+        );
+        setData(response.data);
+      } catch (err) {
+        
+        console.log("Failed to fetch data",err);
+      }
+    };
+
+    fetchData();
   }, []);
 
   // Calculate pagination data
